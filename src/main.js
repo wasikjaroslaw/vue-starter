@@ -4,9 +4,11 @@
 import Vue from 'vue'
 import httpConfig from 'src/config/httpConfig'
 
-import App from './App'
 import store from 'src/vuex'
 import logger from 'src/plugins/logger'
+
+import 'src/config/components'
+import App from './App'
 
 Vue.use(logger, {loggin: true})
 
