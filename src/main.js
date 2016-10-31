@@ -4,6 +4,9 @@
 import Vue from 'vue'
 import App from './App'
 import store from 'src/vuex'
+import logger from './plugins/logger'
+
+Vue.use(logger, {loggin: true})
 
 /* eslint-disable no-new */
 new Vue(Vue.util.extend({

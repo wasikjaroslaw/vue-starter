@@ -10,6 +10,9 @@ import Hello from './components/Hello'
 
 export default {
   name: 'app',
+  created () {
+    this.$logger('info', 'App.vue created')
+  },
   components: {
     Hello
   }
