@@ -3,8 +3,10 @@
 
 import Vue from 'vue'
 import App from './App'
+import store from 'src/vuex'
 
 /* eslint-disable no-new */
 new Vue(Vue.util.extend({
+  store
 }, App))
 .$mount('app')
