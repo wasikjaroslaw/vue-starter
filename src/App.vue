@@ -1,5 +1,6 @@
 <template>
   <div id="app" class="app">
+    <Navbar></Navbar>
     <transition name="router" mode="out-in">
       <router-view class="view router-view"></router-view>
     </transition>
@@ -13,6 +14,7 @@ import router from 'src/config/router'
 import store from 'src/vuex'
 import VuexRouterSync from 'vuex-router-sync'
 
+import 'src/components'
 import 'src/validators'
 
 VuexRouterSync.sync(store, router)

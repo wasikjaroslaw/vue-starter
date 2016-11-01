@@ -1,10 +1,11 @@
 import * as types from 'src/vuex/types'
+import * as authUtils from 'src/utils/auth'
 
 const state = {
   account: {
     name: ''
   },
-  loggedIn: false
+  loggedIn: !!authUtils.getToken()
 }
 
 const mutations = {
