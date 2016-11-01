@@ -41,6 +41,7 @@ router.beforeEach((to, from, next) => {
     // this route requires auth, check if logged in
     // if not, redirect to login page.
     if (!router.app.isLoggedIn) {
+      this.$logger('info', 'not logged. redirect to login.')
       next({
         path: '/login',
         query: { redirect: to.fullPath }

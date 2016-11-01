@@ -1,6 +1,6 @@
 /** auth store **/
 export const isLoggedIn = (state) => {
-  return state.account.loggedIn
+  return !!state.auth.token
 }
 
 /** account store **/

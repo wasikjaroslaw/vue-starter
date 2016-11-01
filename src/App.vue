@@ -10,6 +10,7 @@
 
 <script>
 import {mapGetters, mapActions} from 'vuex'
+import http from 'src/config/http'
 import router from 'src/config/router'
 import store from 'src/vuex'
 import VuexRouterSync from 'vuex-router-sync'
@@ -20,10 +21,12 @@ import 'src/validators'
 VuexRouterSync.sync(store, router)
 
 export default {
+  http,
   router,
   store,
   computed: mapGetters({
-    appVersion: 'getAppVersion'
+    appVersion: 'getAppVersion',
+    isLoggedIn: 'isLoggedIn'
   }),
   methods: {
     ...mapActions({
@@ -38,14 +41,27 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import '~static/variables.scss';
+
+html,
+body {
+  height: 100%;
+}
+
+.app {
+  min-height: 100%;
+}
+
 .router-view {
     transition: all .5s ease;
     min-height: 100vh;
+    color: $test;
   }
 
 .router-enter, .router-leave {
   opacity: 0;
   transform: translate3d(20px, 0, 0);
 }
+
 </style>
