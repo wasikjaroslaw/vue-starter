@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="profile" class="view">
   Profile
 </div>
 </template>
