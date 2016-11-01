@@ -2,7 +2,7 @@ import * as types from 'src/vuex/types'
 import * as authUtils from 'src/utils/auth'
 
 const state = {
-  token: authUtils.getToken() || ''
+  token: authUtils.getToken()
 }
 
 const mutations = {

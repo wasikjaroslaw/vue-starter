@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import {API_URL} from 'src/config/constants'
 
-import me from './data/me.json'
+import test from './data/test.json'
 import auth from './data/auth.json'
 
 const data = {
-  '/accounts/me': me,
+  '/accounts/test': test,
   '/auth/local': auth
 }
 
@@ -17,3 +17,4 @@ Vue.http.interceptors.push((request, next) => {
     status: '200',
     ok: true
   }))
+})
