@@ -1,6 +1,8 @@
 <template>
-<div id="home" class="view">
-  home
+<div id="home" class="view ui raised very padded text container segment">
+  <h2 class="ui header">Home</h2>
+  <p>Semantic UI</p>
+  <p>Test</p>
 </div>
 </template>
 
