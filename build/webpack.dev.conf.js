@@ -4,6 +4,7 @@ var merge = require('webpack-merge')
 var utils = require('./utils')
 var baseWebpackConfig = require('./webpack.base.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 // add hot-reload related code to entry chunks
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {
@@ -36,6 +37,7 @@ module.exports = merge(baseWebpackConfig, {
       'window.jQuery': 'jquery',
       jQuery: 'jquery',
       '_': 'lodash'
-    })
+    }),
+    new ExtractTextPlugin("style.css")
   ]
 })

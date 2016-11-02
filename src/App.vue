@@ -15,8 +15,10 @@ import router from 'src/config/router'
 import store from 'src/vuex'
 import VuexRouterSync from 'vuex-router-sync'
 
+import 'static/semantic.min.js'
 import 'src/components'
 import 'src/validators'
+import formValidator from 'src/directives/formValidator'
 
 VuexRouterSync.sync(store, router)
 
@@ -28,6 +30,9 @@ export default {
     appVersion: 'getAppVersion',
     isLoggedIn: 'isLoggedIn'
   }),
+  directives: {
+    formValidator
+  },
   methods: {
     ...mapActions({
       'initAppVersion': 'initAppVersion'
@@ -42,7 +47,7 @@ export default {
 </script>
 
 <style lang="less">
-@test: #FF0000;
+@import 'assets/variables.less';
 
 html,
 body {
