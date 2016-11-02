@@ -7,8 +7,9 @@ const state = {
 
 const mutations = {
   [types.AUTH_LOGIN_SUCCESS] (state, data) {
-    state.token = data.token
-    authUtils.setToken(data.token)
+    var token = data.token
+    state.token = token
+    authUtils.setToken(token)
   },
   [types.AUTH_LOGIN_FAIL] (state, err) {
     state.token = ''

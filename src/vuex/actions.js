@@ -5,6 +5,7 @@ import * as types from 'src/vuex/types'
 export function login ({commit}, params) {
   return API.Auth.login(params)
   .then((response) => {
+    console.log(response)
     commit(types.AUTH_LOGIN_SUCCESS, response.body)
     return response
   })

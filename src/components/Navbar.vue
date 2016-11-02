@@ -4,9 +4,9 @@
     <router-link to="/" tag="a" class="item">
       <i class="home icon"></i> Home
     </router-link>
-    <a class="item">
-      <i class="grid layout icon"></i> Empty
-    </a>
+    <router-link to="/profile" tag="a" class="item">
+      <i class="grid layout icon"></i> Test auth guard
+    </router-link>
     <router-link v-if="!isLoggedIn" to="/login" tag="a" class="item">
       <i class="mail icon"></i> Login
     </router-link>
@@ -17,7 +17,7 @@
         <router-link to="/profile" tag="a" class="item"><i class="edit icon"></i> Profile</router-link>
         <a class="item"><i class="globe icon"></i> Choose Language</a>
         <a class="item"><i class="settings icon"></i> Account Settings</a>
-        <a class="item" :click="logout()"><i class="globe icon"></i> Logout</a>
+        <a class="item" v-on:click="logout()"><i class="globe icon"></i> Logout</a>
       </div>
     </div>
     <div class="right item">
@@ -35,8 +35,10 @@ export default {
     isLoggedIn: 'isLoggedIn'
   }),
   methods: {
+    logout () {
+      this.$router.push('/logout')
+    },
     ...mapActions({
-      'logout': 'logout'
     })
   }
 }

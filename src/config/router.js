@@ -19,9 +19,18 @@ const routes = [
   },
   {
     path: '/login',
+    auth: false,
+    meta: {
+      onlyAnonymous: true
+    },
     component: resolve => require(['views/account/Login.vue'], resolve)
   },
-  { path: '/logout',
+  {
+    path: '/logout',
+    auth: true,
+    meta: {
+      requiresAuth: true
+    },
     component: resolve => require(['views/account/Logout.vue'], resolve)
   },
   {
@@ -37,11 +46,18 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  console.log('isLog: ' + router.app.isLoggedIn)
+  if (router.app.isLoggedIn && to.matched.some(record => record.meta.onlyAnonymous)) {
+    next({
+      path: '/'
+    })
+  }
+
   if (to.matched.some(record => record.meta.requiresAuth)) {
     // this route requires auth, check if logged in
     // if not, redirect to login page.
+    Vue.$logger('error', 'asd', to)
     if (!router.app.isLoggedIn) {
-      this.$logger('info', 'not logged. redirect to login.')
       next({
         path: '/login',
         query: { redirect: to.fullPath }

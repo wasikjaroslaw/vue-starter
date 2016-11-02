@@ -5,7 +5,16 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 export default {
+  created () {
+    this.callLogout()
+  },
+  methods: {
+    ...mapActions({
+      'callLogout': 'logout'
+    })
+  }
 }
 </script>
 

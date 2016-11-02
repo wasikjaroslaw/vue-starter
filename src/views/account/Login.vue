@@ -20,9 +20,27 @@
 <script>
 import {mapActions} from 'vuex'
 export default {
-  data () {
-    return {
-      'formValidator': {
+  methods: {
+    loginSubmit (event, fields) {
+      this.login()
+      .then((response) => {
+        console.log('LOGGED!')
+      })
+      .then((response) => {
+        this.$router.push(this.redirect)
+      })
+      .catch(() => {})
+    },
+    ...mapActions({
+      'login': 'login'
+    })
+  },
+  computed: {
+    redirect () {
+      return this.$route.query.redirect || '/'
+    },
+    formValidator () {
+      return {
         on: 'blur',
         inline: true,
         fields: {
@@ -49,28 +67,9 @@ export default {
             ]
           }
         },
-        onSuccess: function (event, fields) {
-          console.log(event)
-          console.log(fields)
-          this.loginSubmit()
-        }
+        onSuccess: this.loginSubmit
       }
     }
-  },
-  methods: {
-    'loginSubmit': function () {
-      this.callLogin()
-      .then((response) => {
-        console.log('LOGGED!')
-      })
-      .then((response) => {
-        this.$router.push(this.redirect)
-      })
-      .catch(() => {})
-    },
-    ...mapActions({
-      'login': 'login'
-    })
   }
 }
 

@@ -23,13 +23,13 @@ import formValidator from 'src/directives/formValidator'
 VuexRouterSync.sync(store, router)
 
 export default {
-  http,
-  router,
-  store,
   computed: mapGetters({
     appVersion: 'getAppVersion',
     isLoggedIn: 'isLoggedIn'
   }),
+  http,
+  router,
+  store,
   directives: {
     formValidator
   },
