@@ -41,8 +41,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-@import '~static/variables.scss';
+<style lang="less">
+@test: #FF0000;
 
 html,
 body {
@@ -56,7 +56,7 @@ body {
 .router-view {
     transition: all .5s ease;
     min-height: 100vh;
-    color: $test;
+    color: @test;
   }
 
 .router-enter, .router-leave {

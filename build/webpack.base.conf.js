@@ -20,7 +20,7 @@ module.exports = {
     filename: '[name].js'
   },
   resolve: {
-    extensions: ['', '.js', '.vue'],
+    extensions: ['', '.js', '.vue', '.less'],
     fallback: [path.join(__dirname, '../node_modules')],
     alias: {
       'vue': 'vue/dist/vue.common.js',
@@ -63,6 +63,10 @@ module.exports = {
       {
         test: /\.json$/,
         loader: 'json'
+      },
+        {
+        test: /\.less$/,
+        loader: "less-loader"
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
