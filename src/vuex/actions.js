@@ -14,6 +14,10 @@ export function login ({commit}, params) {
   })
 }
 
+export function logout ({commit}, params) {
+  commit(types.AUTH_LOGOUT)
+}
+
 /* app store */
 export function initAppVersion ({commit}) {
   commit(types.GET_APP_VERSION, process.env.VERSION)

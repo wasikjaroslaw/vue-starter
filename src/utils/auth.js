@@ -3,7 +3,7 @@ const apiTokenKey = 'apiToken'
 var localStorage = window.localStorage
 
 export const getToken = function () {
-  return JSON.parse(localStorage.getItem(apiTokenKey)) || ''
+  return localStorage.getItem(apiTokenKey) || ''
 }
 
 export const setToken = function (token) {

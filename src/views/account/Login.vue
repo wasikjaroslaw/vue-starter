@@ -1,7 +1,7 @@
 <template>
 <div id="home" class="view ui raised very padded text container segment">
   <h2 class="ui header">Login</h2>
-	<div class="ui form" v-form-validator="formValidationRules">
+	<div class="ui form" v-form-validator="formValidator">
     <div class="two fields">
       <div class="required field">
         <label>Name</label>
@@ -18,51 +18,59 @@
 </template>
 
 <script>
-var formValidationRules = {
-  on: 'blur',
-  fields: {
-    username: {
-      identifier: 'username',
-      rules: [
-        {
-          type: 'empty',
-          prompt: 'Please enter your username'
-        }
-      ]
-    },
-    password: {
-      identifier: 'password',
-      rules: [
-        {
-          type: 'empty',
-          prompt: 'Please enter a password'
-        },
-        {
-          type: 'minLength[6]',
-          prompt: 'Your password must be at least {ruleValue} characters'
-        }
-      ]
-    }
-  }
-}
-
-/* var formSettings = {
-  onSuccess: function () {
-    // show alert on validation success
-    console.log('Logged in.')
-  }
-} */
-
+import {mapActions} from 'vuex'
 export default {
   data () {
     return {
-      formValidationRules
+      'formValidator': {
+        on: 'blur',
+        inline: true,
+        fields: {
+          username: {
+            identifier: 'username',
+            rules: [
+              {
+                type: 'empty',
+                prompt: 'Please enter your username'
+              }
+            ]
+          },
+          password: {
+            identifier: 'password',
+            rules: [
+              {
+                type: 'empty',
+                prompt: 'Please enter a password'
+              },
+              {
+                type: 'minLength[6]',
+                prompt: 'Your password must be at least {ruleValue} characters'
+              }
+            ]
+          }
+        },
+        onSuccess: function (event, fields) {
+          console.log(event)
+          console.log(fields)
+          this.loginSubmit()
+        }
+      }
     }
   },
   methods: {
-    sendForm: function () {
-      console.log('test')
-    }
+    'loginSubmit': function () {
+      this.callLogin()
+      .then((response) => {
+        console.log('LOGGED!')
+      })
+      .then((response) => {
+        this.$router.push(this.redirect)
+      })
+      .catch(() => {})
+    },
+    ...mapActions({
+      'login': 'login'
+    })
   }
 }
 

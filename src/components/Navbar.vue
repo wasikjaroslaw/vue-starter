@@ -17,6 +17,7 @@
         <router-link to="/profile" tag="a" class="item"><i class="edit icon"></i> Profile</router-link>
         <a class="item"><i class="globe icon"></i> Choose Language</a>
         <a class="item"><i class="settings icon"></i> Account Settings</a>
+        <a class="item" :click="logout()"><i class="globe icon"></i> Logout</a>
       </div>
     </div>
     <div class="right item">
@@ -27,12 +28,17 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 
 export default {
   computed: mapGetters({
     isLoggedIn: 'isLoggedIn'
-  })
+  }),
+  methods: {
+    ...mapActions({
+      'logout': 'logout'
+    })
+  }
 }
 </script>
 
