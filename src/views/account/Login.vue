@@ -22,9 +22,11 @@ import {mapActions} from 'vuex'
 export default {
   methods: {
     loginSubmit (event, fields) {
-      this.login()
+      this.callLogin()
       .then((response) => {
         console.log('LOGGED!')
+        this.callGetAccount()
+        .catch(() => { console.log('Account not found.') })
       })
       .then((response) => {
         this.$router.push(this.redirect)
@@ -32,7 +34,8 @@ export default {
       .catch(() => {})
     },
     ...mapActions({
-      'login': 'login'
+      'callLogin': 'login',
+      'callGetAccount': 'getAccount'
     })
   },
   computed: {

@@ -11,7 +11,7 @@
       <i class="mail icon"></i> Login
     </router-link>
     <div v-if="isLoggedIn" class="ui simple dropdown item">
-      User
+      <avatar :username="account.fullName" :src="account.avatar"></avatar> {{account.fullName}}
       <i class="dropdown icon"></i>
       <div class="menu">
         <router-link to="/profile" tag="a" class="item"><i class="edit icon"></i> Profile</router-link>
@@ -32,7 +32,8 @@ import {mapGetters, mapActions} from 'vuex'
 
 export default {
   computed: mapGetters({
-    isLoggedIn: 'isLoggedIn'
+    isLoggedIn: 'isLoggedIn',
+    account: 'getAccount'
   }),
   methods: {
     logout () {

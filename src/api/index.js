@@ -5,6 +5,7 @@ import {getToken} from 'src/utils/auth'
 
 Vue.use(VueResource)
 
+Vue.http.options.root = API_URL
 Vue.http.options.crossOrigin = true
 Vue.http.options.xhr = {withCredentials: true}
 Vue.http.options.emulateJSON = true
@@ -22,13 +23,18 @@ if (process.env.NODE_ENV !== 'production') {
   require('./mock-data')
 }
 
-export const Message = Vue.resource(API_URL + '/messages{/id}')
+export const Message = Vue.resource('/messages{/id}')
 
-export const Account = Vue.resource(API_URL + '/accounts{/id}')
+export const Account = Vue.resource('/account', {}, {
+  getAccount: {
+    method: 'get',
+    url: '/account'
+  }
+})
 
-export const Auth = Vue.resource(API_URL + '/auth', {}, {
+export const Auth = Vue.resource('/auth', {}, {
   login: {
     method: 'post',
-    url: '/auth/local'
+    url: '/auth/login'
   }
 })

@@ -1,12 +1,16 @@
+// dependencies
 import Vue from 'vue'
 import {API_URL} from 'src/config/constants'
 
-import test from './data/test.json'
-import auth from './data/auth.json'
+// auth
+import authLogin from './data/authLogin.json'
+
+// account
+import accountMyData from './data/accountMyData.json'
 
 const data = {
-  '/accounts/test': test,
-  '/auth/local': auth
+  '/account': accountMyData,
+  '/auth/login': authLogin
 }
 
 Vue.http.interceptors.push((request, next) => {

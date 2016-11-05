@@ -4,6 +4,9 @@ export const isLoggedIn = (state) => {
 }
 
 /** account store **/
+export const getAccount = (state) => {
+  return state.account.account
+}
 
 /* app store */
 export const getAppVersion = (state) => {

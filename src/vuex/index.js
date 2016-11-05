@@ -16,8 +16,8 @@ const store = new Vuex.Store({
   actions,
   getters,
   modules: {
-    account,
     auth,
+    account,
     app
   },
   strict: false,

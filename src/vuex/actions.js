@@ -19,6 +19,20 @@ export function logout ({commit}, params) {
   commit(types.AUTH_LOGOUT)
 }
 
+/* account store */
+export function getAccount ({commit}) {
+  return API.Account.getAccount()
+  .then((response) => {
+    console.log(response)
+    commit(types.ACCOUNT_GET_ACCOUNT_SUCCESS, response.body)
+    return response
+  })
+  .catch((response) => {
+    commit(types.ACCOUNT_GET_ACCOUNT_FAIL, response.body)
+    return Promise.reject(response)
+  })
+}
+
 /* app store */
 export function initAppVersion ({commit}) {
   commit(types.GET_APP_VERSION, process.env.VERSION)
